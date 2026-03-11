@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ALMEER-V4 PAIRING PANEL</title>
+</head>
+<body>
+    <h1>ALMEER-V4 PAIRING PANEL</h1>
+    <input id="number" placeholder="Enter WhatsApp number">
+    <button onclick="generateCode()">Generate Pairing Code</button>
+    <p id="result"></p>
+
+    <script>
+        async function generateCode() {
+            const number = document.getElementById('number').value;
+            const res = await fetch(`/generate?number=${number}`);
+            const data = await res.json();
+            document.getElementById('result').innerHTML = `PAIRING CODE: ${data.code}<br>SESSION NAME: ${data.session}`;
+        }
+    </script>
+</body>
+</html>
